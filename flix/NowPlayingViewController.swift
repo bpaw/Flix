@@ -80,4 +80,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     }
 
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! MovieCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            let dvc = segue.destination as! DetailMovieViewController
+            dvc.movie = movie
+        }
+    }
 }
